@@ -3,12 +3,15 @@ const app = express();
 const port = process.env.PORT || 3000;
 import "dotenv/config";
 
-console.log(process.env.NODE_ENV);
-console.log(process.env.DB_HOST);
-
 app.get("/env", (req, res) => {
   res.json({
     enviorment: process.env.NODE_ENV,
+  });
+});
+
+app.get("/db-env", (req, res) => {
+  res.json({
+    "db-host": process.env.DB_HOST,
   });
 });
 
