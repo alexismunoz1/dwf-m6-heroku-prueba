@@ -3,6 +3,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 import "dotenv/config";
 
+// handler
 app.get("/env", (req, res) => {
   res.json({
     enviorment: process.env.NODE_ENV,
@@ -19,6 +20,11 @@ app.get("/hola", (req, res) => {
   res.json({
     message: "hola soy alex",
   });
+});
+
+app.use(express.static("dist"));
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "/dist/index.html");
 });
 
 app.listen(port, () => {
